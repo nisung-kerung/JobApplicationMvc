@@ -1,0 +1,44 @@
+@model IEnumerable<JobApplicationMVC.Models.JobApplication>
+@{
+    ViewData["Title"] = "All Job Applications";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a class="btn btn-success" href="@Url.Action("Create")">Create New Application</a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-primary">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Age</th>
+            <th>Position</th>
+            <th>Experience</th>
+            <th>Education</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var app in Model)
+    {
+        <tr>
+            <td>@app.Id</td>
+            <td>@app.Name</td>
+            <td>@app.City</td>
+            <td>@app.Age</td>
+            <td>@app.Position</td>
+            <td>@app.Experience</td>
+            <td>@app.Education</td>
+            <td>
+                <a class="btn btn-info btn-sm" href="@Url.Action("Details", new { id = app.Id })">Details</a>
+                <a class="btn btn-warning btn-sm" href="@Url.Action("Edit", new { id = app.Id })">Edit</a>
+                <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", new { id = app.Id })">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
